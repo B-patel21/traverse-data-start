@@ -37,15 +37,22 @@ function btnClicked() {
 }
 
 // Menu Option Functions
-function traverseSurveyData() {
-  // Traverse the surveyData array to:
-  // Count the number of "Yes" responses,
-  // Count the number of "No" responses,
-  // Count the number of "Maybe" responses,
-  // and output the results in the outputEl.
-
-  outputEl.innerHTML = "Survey Data";
+outputEl.innerHTML = "Survey Data";
   console.log(surveyData);
+let surveyArray;
+ fetch("survey-results.txt") 
+ .then((res) => res.text())
+ .then((data) => {
+  surveyArray = data.split(/\r?\n/);
+  
+  for (let i = 0; i < surveyArray.length;i++) {
+    outputEl.innerHTML += traverseSurveyData(surveyArray[i]);
+  }
+});
+
+function traverseSurveyData(survey) {
+return `<p>${survey}</p>`
+ 
 }
 
 function traverseAgeData() {
