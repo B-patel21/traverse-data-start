@@ -36,23 +36,29 @@ function btnClicked() {
   }
 }
 
-// Menu Option Functions
-outputEl.innerHTML = "Survey Data";
-  console.log(surveyData);
-let surveyArray;
- fetch("survey-results.txt") 
- .then((res) => res.text())
- .then((data) => {
-  surveyArray = data.split(/\r?\n/);
-  
-  for (let i = 0; i < surveyArray.length;i++) {
-    outputEl.innerHTML += traverseSurveyData(surveyArray[i]);
-  }
-});
 
-function traverseSurveyData(survey) {
-return `<p>${survey}</p>`
- 
+
+
+function traverseSurveyData() {
+ let YesCounter = 0;
+ let NoCounter = 0;
+ let MaybeCounter = 0;
+
+for (let i = 0; i <surveyData.length;i++){
+  if (surveyData[i] === `Yes`){
+  YesCounter++;
+  }else if (surveyData[i] === `No`){
+NoCounter++;
+  }else{
+    MaybeCounter++;
+  } 
+}
+// Menu Option Functions
+outputEl.innerHTML = 
+`Survey Data Yes ${YesCounter} Survey Data No ${NoCounter} 
+Survey Data ${MaybeCounter}`;
+  console.log(surveyData);
+
 }
 
 function traverseAgeData() {
