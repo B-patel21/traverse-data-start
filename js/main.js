@@ -62,23 +62,34 @@ Survey Data ${MaybeCounter}`;
 }
 
 function traverseAgeData() {
-  // Traverse the ageData array to:
-  // Count the number of ages under 18,
-  // Count the number of ages between 18 and 35, inclusive
-  // Count the number of ages between 36 and 65, inclusive
-  // Count the number of ages above 65,
-  // and output the results in the outputEl.
-
-  outputEl.innerHTML = "Age Data";
+let AgesUnder18 = 0;
+let AgesBetween1835 = 0;
+let AgesBetween3565 = 0;
+let AgesAbove65 = 0;
+for(let i = 0; i < ageData.length; i++){
+if (ageData[i] < 18){
+  AgesUnder18++;
+}else if (ageData[i] <=35){
+  AgesBetween1835++;
+} else if (ageData[i] <=65){
+  AgesBetween3565++;
+}else{
+  AgesAbove65++;
+}
+  outputEl.innerHTML = `Under 18: (${AgesUnder18}) , Ages 18 - 35:(${AgesBetween1835}), Ages 35 - 65: (${AgesBetween3565}), Ages Above 65: (${AgesAbove65})`;
   console.log(ageData);
+}
 }
 
 function traverseNumberData() {
-  // Traverse the numberData array to:
-  // Count the number of even numbers,
-  // Count the number of odd numbers,
-  // and output the results in the outputEl.
-
-  outputEl.innerHTML = "Number Data";
+let even = 0;
+let odd = 0;
+for(let i = 0; i < numberData.length; i++)
+if (numberData[i] % 2 === 0){
+  even++;
+}else{
+  odd++
+}
+  outputEl.innerHTML = `# of even number ${even}, # of odd number ${odd}`;
   console.log(numberData);
 }
